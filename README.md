@@ -95,7 +95,7 @@ If you like our paper and use it for your research, please cite us.
 
 ```
 @incollection{Wieser,
-title = {Improved Variational Inference with Inverse Autoregressive Flow},
+title = {Inverse Learning of Symmetries},
 author = {Wieser, Mario and Parbhoo, Sonali and Wieczorek, Aleksander and Roth, Volker},
 booktitle = {Advances in Neural Information Processing Systems 34},
 year = {2020}
