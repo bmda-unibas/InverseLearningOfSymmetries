@@ -31,7 +31,7 @@ if __name__ == "__main__":
 
     # training
     if args.mode == Strings.TRAIN:
-        training = Training()
+        training = Training(args=args)
         training.train()
 
     # evaluation
