@@ -1,7 +1,6 @@
 matplotlib==2.2.2
 numpy==1.16.2
-npeet==1.0.0
 scikit-learn==0.19.1
-scipy==0.1.1
+scipy==1.1.0
 tensorflow-gpu==1.15.3
 tqdm==4.11.2

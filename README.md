@@ -18,7 +18,7 @@ mkdir symmetries
 cd symmetries
 git clone https://github.com/bmda-unibas/InverseLearningOfSymmetries.git
 cd ..
-virtualenv symmetries/paper
+virtualenv -p python3 symmetries/paper
 ```
 
 Activate the environment:
@@ -28,6 +28,18 @@ source symmetries/paper/bin/activate
 Install the dependencies:
 ```
 pip install -r symmetries/InverseLearningOfSymmetries/requirements.txt
+```
+
+Download Kraskov Estimator:
+```
+cd symmetries
+git clone https://github.com/gregversteeg/NPEET.git
+cd NPEET
+```
+
+Install in current virtualenv:
+```
+$VIRTUAL_ENV/bin/python setup.py install
 ```
 
 ## Training
