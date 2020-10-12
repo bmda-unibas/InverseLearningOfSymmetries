@@ -9,9 +9,10 @@ from models.CVIB import CVIBModel
 
 
 class Training:
-    def __init__(self, args):
+    def __init__(self, args, dataset):
         self.log = logging.getLogger(__name__)
         self.args = args
+        self.dataset = dataset
 
     def train(self):
         self.log.info("Evaluating %s" % self.args.model)

@@ -134,7 +134,6 @@ class CVIBModel(BaseModel):
     def optimizeModel(self):
 
         x_l_t = np.inf
-        y_l_t = np.inf
 
         with tf.Session(config=self.config) as sess:
             sess.run(tf.global_variables_initializer())
@@ -145,7 +144,7 @@ class CVIBModel(BaseModel):
                 x_batch, y_batch, t_batch = self.dataset.next_batch(self.batch_size)
 
                 _, mu_out, ll_out, rl_out, log_sigma_out = sess.run(
-                    [self.optimizer, self.mu, self.latent_loss, self.x_reconstr_loss, self.log_sigma],
+                    [self.optimizer, self.mu, self.latent_loss, self.x_reconstr_loss, self.z_log_sigma_sq],
                     feed_dict={self.tf_X: x_batch, self.tf_Y: y_batch, self.lagMul: np.asarray([[self.lm]])})
 
                 if ((iter) % 300 == 0) and iter > 1:
@@ -154,7 +153,9 @@ class CVIBModel(BaseModel):
                         self.mu,
                         feed_dict={self.tf_X: x_batch, self.tf_Y: y_batch, self.lagMul: np.asarray([[self.lm]])})
 
-                    x_mae_out = sess.run([self.x_mae],
+                    mu_out = np.hstack((mu_out, y_batch))
+
+                    x_mae_out = sess.run(self.x_mae,
                                               feed_dict={self.tf_X: x_batch, self.tf_Y: y_batch, self.lagMul: np.asarray([[self.lm]]),
                                                          self.z: mu_out})
 
@@ -164,7 +165,6 @@ class CVIBModel(BaseModel):
                         print("save model")
                         save_path = self.saver.save(sess, self.args.save_path)
 
-                        self.lm = self.lm * 1.03
 
 
 
