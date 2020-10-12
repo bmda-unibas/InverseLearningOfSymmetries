@@ -8,6 +8,8 @@ from models.BaseModel import BaseModel
 import Plotter
 import Strings
 
+np.random.seed(1234)
+
 class STIBwoIRModel(BaseModel):
     def __init__(self,dataset, z0_size, z1_size, y_size, x_size, args):
         super().__init__(dataset, z0_size, z1_size, y_size, x_size, args)
@@ -119,3 +121,8 @@ class STIBwoIRModel(BaseModel):
             Plotter.plot2DData(y_rec[:, :], bins[:], self.args.plot_path, Strings.STIB_WO_REG_Y)
             Plotter.plot2DLatentSpace(z0[:, 0], z1[:], bins[:], self.args.plot_path, Strings.STIB_WO_REG_LATENT)
             Plotter.plot2DData(x_rec[:, :], bins[:], self.args.plot_path, Strings.STIB_WO_REG_X)
+
+            # tmp_idx = np.random.choice(10000, 1000)
+            #
+            # Plotter.plot2DData(x_rec[tmp_idx, :], bins[tmp_idx], self.args.plot_path, "wo_adv-x-rec_1.pdf")
+            # Plotter.plot2DData(y_rec[tmp_idx, :], bins[tmp_idx], self.args.plot_path, "wo_adv-y-rec_1.pdf")

@@ -8,6 +8,7 @@ from models.BaseModel import BaseModel
 import Plotter
 import Strings
 
+np.random.seed(1234)
 class STIBModel(BaseModel):
     def __init__(self,dataset, z0_size, z1_size, y_size, x_size, args):
         super().__init__(dataset, z0_size, z1_size, y_size, x_size, args)
@@ -178,3 +179,8 @@ class STIBModel(BaseModel):
             Plotter.plot2DData(y_rec[:, :], bins[:], self.args.plot_path, Strings.STIB_Y)
             Plotter.plot2DLatentSpace(z0[:, 0], z1[:], bins[:], self.args.plot_path, Strings.STIB_LATENT)
             Plotter.plot2DData(x_rec[:, :], bins[:], self.args.plot_path, Strings.STIB_X)
+
+            # tmp_idx = np.random.choice(10000, 1000)
+            #
+            # Plotter.plot2DData(x_rec[tmp_idx, :], bins[tmp_idx], self.args.plot_path, "plot-x-rec_4.pdf")
+            # Plotter.plot2DData(y_rec[tmp_idx, :], bins[tmp_idx], self.args.plot_path, "plot-y-rec_4.pdf")

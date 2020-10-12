@@ -8,6 +8,8 @@ from models.BaseModel import BaseModel
 import Plotter
 import Strings
 
+np.random.seed(1234)
+
 class CVAEModel(BaseModel):
     def __init__(self,dataset, z0_size, z1_size, y_size, x_size, args):
         super().__init__(dataset, z0_size, z1_size, y_size, x_size, args)
@@ -103,6 +105,10 @@ class CVAEModel(BaseModel):
 
             mi = ee.mi(z0, y, k=20)
             self.log.info("Mutual Information: %f, X MAE: %f" % (mi, x_mae_out))
+
+            tmp_idx = np.random.choice(10000, 1000)
+
+            # Plotter.plot2DData(x_rec[tmp_idx, :], bins[tmp_idx], self.args.plot_path, "condvae-x-rec_1.pdf")
 
 
 

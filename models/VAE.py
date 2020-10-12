@@ -8,6 +8,8 @@ from models.BaseModel import BaseModel
 import Plotter
 import Strings
 
+np.random.seed(1234)
+
 class VAEModel(BaseModel):
     def __init__(self,dataset, z0_size, z1_size, y_size, x_size, args):
         super().__init__(dataset, z0_size, z1_size, y_size, x_size, args)
@@ -116,3 +118,10 @@ class VAEModel(BaseModel):
             Plotter.plot2DData(y_rec[:, :], bins[:], self.args.plot_path, Strings.VAE_Y)
             Plotter.plot2DLatentSpace(z0[:, 0], z0[:, 1], bins[:], self.args.plot_path, Strings.VAE_LATENT)
             Plotter.plot2DData(x_rec[:, :], bins[:], self.args.plot_path, Strings.VAE_X)
+
+            # tmp_idx = np.random.choice(10000, 1000)
+            #
+            # Plotter.plot2DData(x_rec[tmp_idx, :], bins[tmp_idx], self.args.plot_path, "plain-x-rec_1.pdf")
+            # Plotter.plot2DData(y_rec[tmp_idx, :], bins[tmp_idx], self.args.plot_path, "plain-y-rec_1.pdf")
+            # Plotter.plot2DData(x[tmp_idx, :], bins[tmp_idx], self.args.plot_path, "plot_real_x.pdf")
+            # Plotter.plot2DData(y[tmp_idx, :], bins[tmp_idx], self.args.plot_path, "plot_real_y.pdf")
