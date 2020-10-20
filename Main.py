@@ -16,9 +16,9 @@ if __name__ == "__main__":
 
     # parse arguments
     parser = argparse.ArgumentParser()
-    parser.add_argument('--mode', help='Set training or evaluation mode', default="train")
+    parser.add_argument('--mode', help='Set training or evaluation mode', default="evaluate")#evaluate train
     parser.add_argument('--model', help='Set model', default="STIB")
-    parser.add_argument('--pretrained', help='Set pretrained model', default="pretrained/CVAE.ckpt")
+    parser.add_argument('--pretrained', help='Set pretrained model', default="pretrained/STIB.ckpt")
     parser.add_argument('--save_path', help='Set save path model', default="saved_models/STIB_new.ckpt")
     parser.add_argument('--eval_dataset', help='Set evaluation dataset', default="dataset/testset.pickle")
     parser.add_argument('--batch_size', help='Set batch size', default=60)
