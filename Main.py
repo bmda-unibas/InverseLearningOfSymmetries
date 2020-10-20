@@ -12,7 +12,7 @@ logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 if __name__ == "__main__":
     # set logger
     log = logging.getLogger(__name__)
-    logging.info("NeurIPS 2020 Implementation our paper: Inverse Learning of Symmetries")
+    logging.info("NeurIPS 2020 Implementation of our paper: Inverse Learning of Symmetries")
 
     # parse arguments
     parser = argparse.ArgumentParser()
